@@ -1,0 +1,9 @@
+#light,
+#dark,
+#auto {
+    display: none;
+}
+
+input:checked+label {
+    background: #1bc8d8;
+}
