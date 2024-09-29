@@ -1,14 +1,14 @@
-$(document).ready(function () {
+$(document).ready(function () { //読み込まれたとき
     $("#custom").hide();
     $("#w").hide();
     $("#aftercustom").hide();
     $("#afterw").hide();
     const mediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
-    mediaQueryList.addEventListener("change", function () {
+    mediaQueryList.addEventListener("change", function () { //ライト・ダークが切り替えられたとき
         changedrak();
     });
-    $("input:radio").click(function () {
-        let checked = $("input:radio[name='theme']:checked").val();
+    $("input:radio").click(function () { //ダークモード切替ボタン押されたら
+        let checked = $("input:radio[name='theme']:checked").val(); //押されたやつ取得
         if (checked == "light") {
             $("body").attr("data-bs-theme", "light");
             colorchange();
@@ -30,7 +30,7 @@ $(document).ready(function () {
         }
         colorchange();
     }
-    function colorchange() {
+    function colorchange() { //ボタンの色合い調節
         $("input:radio+label").css("background", "");
         if ($("body").attr("data-bs-theme") == "light") {
             $("input:checked+label").css("background", "#1bc8d8");
@@ -46,12 +46,13 @@ $(document).ready(function () {
     changedrak();
 
     let btn = $("#do");
-    btn.click(function () {
-        let joule
+    btn.click(function () { //計算ボタンが押されたら
+        let joule;
+        let sec = $("#min").val() * 60 + Number($("#sec").val());
         if ($("#watt").val() == "custom") {
-            joule = $("#custom").val() * ($("#min").val() * 60 + $("#sec").val());
+            joule = $("#custom").val() * sec;
         } else {
-            joule = $("#watt").val() * ($("#min").val() * 60 + $("#sec").val());
+            joule = $("#watt").val() * sec;
         }
         if ($("#afterwatt").val() == "custom") {
             $("#aftermin").val(Math.floor(joule / $("#aftercustom").val() / 60));
