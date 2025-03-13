@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="element_script.js"></script>
+    <link rel="stylesheet" href="element_style.css">
+    <title>元素記号</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="title">元素記号</div>
+        <div id="buttons">
+            <button class="select" value="0">1~10</button>
+            <button class="select" value="1">11~20</button>
+            <button class="select" value="2">21~30</button>
+            <button class="select" value="3">31~40</button>
+            <button class="select" value="4">41~50</button>
+            <button class="select" value="5">51~60</button>
+            <button class="select" value="6">61~70</button>
+            <button class="select" value="7">71~80</button>
+            <button class="select" value="8">81~90</button>
+            <button class="select" value="9">91~100</button>
+            <button class="select" value="10">101~110</button>
+            <button class="select" value="11">111~118</button>
+            <button class="select all" value="all">全て</button>
+        </div>
+        <div id="countset" style="display: none;">
+            <div style="font-size: 30px;">問題数を設定</div>
+            <input type="number" id="max" placeholder="max:118">
+            <button id="maxsend">設定</button>
+        </div>
+        <div id="modes" style="display: none;">
+            <table>
+                <tr>
+                    <td><button class="mode" value="0">族と周期<br>→元素</button></td>
+                    <td><button class="mode" value="1">元素番号<br>→元素</button></td>
+                </tr>
+                <tr>
+                    <td><button class="mode" value="2">元素記号<br>→元素</button></td>
+                    <td><button class="mode" value="3">元素<br>→元素記号</button></td>
+                </tr>
+            </table>
+        </div>
+        <div id="question" style="display: none;">
+            <div id="grid" style="display: none;">
+                <table id="qtable" border="2">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="text"></div>
+            <div id="ans">
+                <input type="text" placeholder="元素記号" id="mark" autocomplete="off">
+                <input type="text" placeholder="元素名" id="name" autocomplete="off">
+                <button id="submit">決定</button>
+            </div>
+            <div id="count"></div>
+            <div id="right"></div>
+            <div id="wrong">
+                <svg width="180" height="180" viewBox="0 0 50 50" stroke="blue" stroke-width="5">
+                    <line x1="5" y1="5" x2="45" y2="45" />
+                    <line x1="5" y1="45" x2="45" y2="5" />
+                </svg>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
