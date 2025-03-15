@@ -34,7 +34,7 @@ const data = [
 let mode, sorted, max, count;
 
 window.addEventListener("load", () => {
-    max = 10;
+    init();
     let select = 0;
     Array.from(document.getElementsByClassName("select")).forEach(element => {
         const id = element.value;
@@ -81,6 +81,17 @@ window.addEventListener("load", () => {
         });
     });
     document.getElementById("submit").addEventListener("click", () => {
+        if (count - 1 == max) {
+            document.getElementById("buttons").style.display = null;
+            init();
+            return;
+        }
+        if (document.getElementById("submit").innerText == "次へ") {
+            document.getElementById("rans").style.display = "none";
+            document.getElementById("submit").innerText = "決定";
+            ask();
+            return;
+        }
         document.getElementById("submit").setAttribute("disabled", "true");
         let correct = true;
         if (mode == 0 || mode == 1 || mode == 3) {
@@ -102,15 +113,27 @@ window.addEventListener("load", () => {
             right.style.display = "none";
             wrong.style.display = "none";
             count++;
-            if (count - 1 != max) {
+            if (correct) {
                 ask();
+            } else {
+                document.getElementById("submit").innerText = "次へ";
+                if (mode == 0 || mode == 1) {
+                    document.getElementById("rans").innerText = `正解:\n${data[sorted[count - 2]][0]}\n${data[sorted[count - 2]][1]}`
+                } else if (mode == 2) {
+                    document.getElementById("rans").innerText = `正解:\n${data[sorted[count - 2]][1]}`
+                } else {
+                    document.getElementById("rans").innerText = `正解:\n${data[sorted[count - 2]][0]}`
+                }
+                document.getElementById("rans").style.display = null;
+            }
+            if (count - 1 == max) {
+                document.getElementById("submit").innerText = "ホームに戻る";
             }
             document.getElementById("submit").removeAttribute("disabled");
         }, 1000);
     });
 });
 
-count = 1;
 function start(select) {
     let order = Array.from({ length: (select == "all") ? 118 : max }, (_, index) => index);
     sorted = [];
@@ -125,7 +148,6 @@ function start(select) {
             const l = 56 <= order[j] + ratio && order[j] + ratio <= 70;
             const a = 88 <= order[j] + ratio && order[j] + ratio <= 102;
             if (l || a) {
-                console.log(order[j])
                 if (select == "all") {
                     i--;
                 } else {
@@ -150,7 +172,7 @@ function start(select) {
 }
 
 function ask() {
-    document.getElementById("count").innerText = `${count}問目/${max}問`
+    document.getElementById("count").innerText = `${count}問目/${max}問`;
     document.getElementById("mark").value = null;
     document.getElementById("name").value = null;
     if (mode == 0) {
@@ -196,4 +218,18 @@ function ask() {
     } else if (mode == 3) {
         document.getElementById("text").innerText = data[sorted[count - 1]][1];
     }
+}
+
+function init() {
+    mode, sorted = null;
+    max = 10;
+    count = 1;
+    document.getElementById("max").value = null;
+    document.getElementById("rans").style.display = "none";
+    document.getElementById("submit").innerText = "決定";
+    document.getElementById("question").style.display = "none";
+    document.getElementById("grid").style.display = "none";
+    document.getElementById("modes").style.display = "none";
+    document.getElementById("countset").style.display = "none";
+    document.getElementById("text").style.display = "none";
 }
