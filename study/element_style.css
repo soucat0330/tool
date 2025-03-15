@@ -14,7 +14,7 @@ body {
 
 #title {
     padding-top: 10px;
-    font-size: 45px;
+    font-size: 50px;
 }
 
 #buttons {
@@ -74,7 +74,6 @@ body {
 
 .mode {
     font-size: 25px;
-    color: black;
     width: 140px;
     height: 140px;
     padding: 0;
@@ -115,7 +114,16 @@ input[type="text"] {
     font-size: 20px;
 }
 
-#submit {
+#rans {
+    width: 250px;
+    margin: 0 auto;
+    font-size: 25px;
+    border: 3px solid darkblue;
+    border-radius: 10px;
+}
+
+#submit,
+#next {
     font-size: 25px;
     width: 200px;
     height: 50px;
@@ -126,7 +134,8 @@ input[type="text"] {
     margin-top: 10px;
 }
 
-#submit:hover {
+#submit:hover,
+#next:hover {
     background-color: rgb(141, 49, 49);
 }
 
