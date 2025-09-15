@@ -15,35 +15,55 @@
 
 <body>
     <div class="container">
-        <div class="row mx-2">
+        <div class="row mx-2" id="subjects">
             <div class="col-10 col-md-4 col-lg-2 d-flex">
-                <label for="subject-1" class="form-label col-auto m-auto me-1">国語</label>
+                <label class="form-label col-auto m-auto me-1">国語</label>
                 <input type="color" class="form-control form-control-color set-c">
                 <input type="number" class="form-control col" id="subject-1">
             </div>
             <div class="col-10 col-md-4 col-lg-2 d-flex">
-                <label for="subject-2" class="form-label col-auto m-auto me-1">社会</label>
+                <label class="form-label col-auto m-auto me-1">社会</label>
                 <input type="color" class="form-control form-control-color set-c">
                 <input type="number" class="form-control col" id="subject-2">
             </div>
             <div class="col-10 col-md-4 col-lg-2 d-flex">
-                <label for="subject-3" class="form-label col-auto m-auto me-1">数学</label>
+                <label class="form-label col-auto m-auto me-1">数学</label>
                 <input type="color" class="form-control form-control-color set-c">
                 <input type="number" class="form-control col" id="subject-3">
             </div>
             <div class="col-10 col-md-4 col-lg-2 d-flex">
-                <label for="subject-4" class="form-label col-auto m-auto me-1">理科</label>
+                <label class="form-label col-auto m-auto me-1">理科</label>
                 <input type="color" class="form-control form-control-color set-c">
                 <input type="number" class="form-control col" id="subject-4">
             </div>
             <div class="col-10 col-md-4 col-lg-2 d-flex">
-                <label for="subject-5" class="form-label col-auto m-auto me-1">英語</label>
+                <label class="form-label col-auto m-auto me-1">英語</label>
                 <input type="color" class="form-control form-control-color set-c">
                 <input type="number" class="form-control col" id="subject-5">
             </div>
         </div>
         <div class="row my-2">
-            <button id="add" class="btn btn-primary col-auto m-auto">教科を追加</button>
+            <button id="add" class="btn btn-primary col-auto m-auto" data-bs-toggle="modal" data-bs-target="#add-subject">教科を追加</button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="add-subject" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">追加する教科の設定</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="set-subject" placeholder="教科名を入力" class="form-control">
+                    <label for="set-color">色を設定</label>
+                    <input type="color" class="form-control-color" id="set-color">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+                    <button type="button" class="btn btn-primary" id="add-submit">追加</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>
