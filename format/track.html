@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>format</title>
+    <script>
+        window.addEventListener("load", () => {
+            document.getElementById("format").addEventListener("click", () => {
+                const text = document.getElementById("in").value;
+                const arr = text.split("\n");
+                let removed = [];
+                for(let i = 0; i < arr.length; i++) if(i % 2 == 1) removed.push(arr[i]);
+                removed = removed.map(ele => ele.replaceAll("　", "\t").replaceAll(" ", "\t"));
+                const out = document.getElementById("out");
+                out.textContent = null;
+                removed.forEach(ele => out.textContent += ele + "\n");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <textarea name="in" id="in" style="height: 200px; width: 700px;"></textarea>
+    <div>
+        <button type="button" id="format">format</button>
+    </div>
+    <textarea name="out" id="out" style="height: 200px; width: 700px;"></textarea>
+</body>
+
+</html>
